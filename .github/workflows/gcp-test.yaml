@@ -39,4 +39,4 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: europe-west3-docker.pkg.dev/ams-pro/test:${{ steps.get_version.outputs.version }}
+        tags: europe-west3-docker.pkg.dev/ams-pro-2022/ams-pro/test:${{ steps.get_version.outputs.version }}
