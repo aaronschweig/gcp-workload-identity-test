@@ -12,7 +12,6 @@ jobs:
   dockerize:
     uses: aaronschweig/gcp-workload-identity-test/.github/workflows/reusable-workflow.yaml@main
     with:
-      version: ${GITHUB_REF#refs/tags/}-from-caller
       service: test
   
   verify:

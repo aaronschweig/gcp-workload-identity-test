@@ -2,11 +2,14 @@ on:
   workflow_call:
     inputs:
       version:
+        default: ${GITHUB_REF#refs/tags/}
         type: string
-        required: true
       service:
         type: string
         required: true
+      context:
+        type: string
+        default: .
     outputs:
       tag:
         description: The generated and pushed image tag
@@ -45,7 +48,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
-        context: .
+        context: ${{ inputs.context }}
         push: true
         tags: ${{ steps.prepare_tag.outputs.tag }}
 
