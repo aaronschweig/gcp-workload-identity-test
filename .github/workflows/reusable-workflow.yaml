@@ -10,15 +10,17 @@ on:
     outputs:
       tag:
         description: The generated and pushed image tag
-        value: ${{ steps.prepare_tag.outputs.tag }}
+        value: ${{ jobs.build-and-push.outputs.tag }}
 
-permissions:
-  id-token: write
-  contents: read
+# permissions:
+#   id-token: write
+#   contents: read
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.prepare_tag.tag }}
     steps:
   
     - name: Prepare image tags
