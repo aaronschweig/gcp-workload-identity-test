@@ -1,7 +1,7 @@
 on:
   workflow_call:
     inputs:
-      version: # ${GITHUB_REF#refs/tags/}
+      version:
         type: string
         required: true
       service:
@@ -10,14 +10,10 @@ on:
     outputs:
       tag:
         description: The generated and pushed image tag
-        value: ${{ jobs.build-and-push.outputs.tag }}
-
-# permissions:
-#   id-token: write
-#   contents: read
+        value: ${{ jobs.build_and_push.outputs.tag }}
 
 jobs:
-  build-and-push:
+  build_and_push:
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.prepare_tag.tag }}

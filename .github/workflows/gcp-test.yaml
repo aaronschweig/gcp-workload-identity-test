@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  build-and-push:
+  dockerize:
     uses: aaronschweig/gcp-workload-identity-test/.github/workflows/reusable-workflow.yaml@main
     with:
       version: ${GITHUB_REF#refs/tags/}-from-caller
@@ -17,7 +17,7 @@ jobs:
   
   verify:
     runs-on: ubuntu-latest
-    needs: build-and-push
+    needs: dockerize
     steps:
     - name: Print image tag
-      run: echo ${{ needs.build-and-push.outputs.tag }}
+      run: echo ${{ needs.dockerize.outputs.tag }}
