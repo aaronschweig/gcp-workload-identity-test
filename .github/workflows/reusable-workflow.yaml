@@ -10,7 +10,7 @@ on:
     outputs:
       tag:
         description: The generated and pushed image tag
-        value: ${{ jobs.build_and_push.outputs.tag }}
+        value: 'read hardcoded value'
 
 jobs:
   build_and_push:
