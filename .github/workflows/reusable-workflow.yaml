@@ -10,13 +10,13 @@ on:
     outputs:
       tag:
         description: The generated and pushed image tag
-        value: 'read hardcoded value'
+        value: ${{ jobs.build_and_push.outputs.tag }}
 
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
     outputs:
-      tag: ${{ steps.prepare_tag.tag }}
+      tag: 'hardcode in here'
     steps:
   
     - name: Prepare image tags
