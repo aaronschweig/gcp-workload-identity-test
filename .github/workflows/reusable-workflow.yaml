@@ -16,7 +16,7 @@ jobs:
   build_and_push:
     runs-on: ubuntu-latest
     outputs:
-      tag: 'hardcode in here'
+      tag: ${{ steps.prepare_tag.outputs.tag }}
     steps:
   
     - name: Prepare image tags
